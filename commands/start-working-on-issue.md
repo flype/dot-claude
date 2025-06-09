@@ -12,3 +12,14 @@ Make sure you read the issue and comments in order to understand the full contex
 
 Ask for any clarification that you need on the issue content before starting the implentation
 Record the clarification questions and the answer as a comment in the github issue
+
+After you finish working and all the build and test work locally, your work it's pushed
+Check the result from the CI and loop and fix any issue that might arise until the build passes.
+
+If the implemented allows suggest me a plan for doing the manual testing, if confirmed do it and left a trail in a comment. check the "Testing checklist" in the PR content if any. leave detailed evicence of the manual testing done, run outputs, scripts used or any relevant info so I can be confident it worked.
+
+After all leave a comment invoking the claude final review in the CI to kick the PR final review for merge. Just create a comment with this content: "@claude"
+
+wait for the review comment from claude when finish, propose me the changes you would make from their suggestion and ask me for confirmation before doing them
+
+if the change will require another team to do changes on their side, backend or IOS, prepare a memo explaining what they need to do, so I can send them easily, leave it as a comment

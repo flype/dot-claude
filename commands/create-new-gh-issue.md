@@ -12,7 +12,7 @@ Help me flex out a good defined story that can be implemented easily, follow thi
 - User value
 - Potential solutions
 - Definition of Done
-- Testing Checklist:
+- Manual Testing Checklist:
 
 
 Make sure that you check how the implementation it's done so you can suggest precise solutions.
@@ -22,3 +22,4 @@ format everything ready for markdown for github issue
 
 Ask me for a rewview and if everything correct
 Go ahead an use the gh cli to create the issue for me.
+Make sure you added to project:"cooking Scoop!' with status:Todo
