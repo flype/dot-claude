@@ -1,27 +1,85 @@
-I want to continue work on issue #$ARGUMENT$ 
+# Continue Work on GitHub Issue #$ARGUMENT$
 
-git fetch to get the last branches created
-We always store the worktree in the project-directory/tree
-check we have the tree created already.
-create the worktree if not
-CD to move claude working directory to the right worktree directory
+## Setup Phase
+1. Fetch latest branches: `git fetch origin`
+2. Find the existing branch for this issue:
+   - List worktrees: `git worktree list`
+   - Look for branch pattern: `issue-$ARGUMENT$-*`
+3. If worktree exists:
+   - Change to existing worktree directory: `cd ./tree/issue-$ARGUMENT$-*`
+   - Pull latest changes: `git pull origin <branch-name>`
+4. If worktree doesn't exist:
+   - Check if remote branch exists: `git branch -r | grep issue-$ARGUMENT$`
+   - Fetch issue title: `gh issue view $ARGUMENT$ --json title -q .title`
+   - Sanitize title: lowercase, replace spaces with hyphens, remove special characters
+   - Create worktree from existing branch: `git worktree add ./tree/issue-$ARGUMENT$-<sanitized-title> issue-$ARGUMENT$-<sanitized-title>`
+   - Change to worktree directory: `cd ./tree/issue-$ARGUMENT$-*`
 
-Make sure you read the issue and comments in order to understand the full context using gh cli
+## Context Analysis Phase
+1. Read the full issue content and ALL comments: `gh issue view $ARGUMENT$ --comments`
+2. Find associated PR: `gh pr list --search "issue:$ARGUMENT$" --json number,url`
+3. Review existing work:
+   - Read all commits: `git log --oneline --decorate`
+   - Review commit messages and changes: `git log -p`
+   - Check PR description and comments: `gh pr view --comments`
+4. Analyze current state:
+   - What has been implemented
+   - What tests have been added
+   - Any feedback from previous reviews
 
-Read all the commits, both code and messages, in all the work done already in the branch.
+## Planning Phase
+1. Create a detailed plan covering:
+   - Summary of work already completed
+   - List of remaining tasks
+   - Any refactoring needed based on previous commits
+   - Testing requirements
+2. Present the plan to me for review
+3. Ask for any clarifications needed
+4. Post the approved plan as a comment on the PR with header: "## Continuing Work - Plan"
 
-Prepare a plan on what's missing and what are you going to work next.
-Show the plan Ask for any clarification that you need on the issue content before starting the implentation
+## Implementation Phase
+1. Execute the plan step by step
+2. Ensure consistency with existing code in the branch
+3. Run local builds and tests before pushing
 
-Leave a comment in the PR indicating the plan of attack for the WIP.
+## Testing & CI Phase
+1. Push the changes to the branch
+2. Monitor CI results
+3. If CI fails:
+   - Fix the issues
+   - Push fixes
+   - Repeat until CI passes
 
-After you finish working and all the build and test work locally, your work it's pushed
-Check the result from the CI and loop and fix any issue that might arise until the build passes.
+## Manual Testing (if applicable)
+1. If the feature allows manual testing, propose a testing plan
+2. Upon confirmation, execute the manual testing
+3. Document in a PR comment:
+   - Testing steps performed
+   - Commands/scripts used
+   - Output screenshots or logs
+   - Results and observations
+4. Check and complete any "Testing checklist" items in the PR description
 
-If the implemented allows suggest me a plan for doing the manual testing, if confirmed do it and left a trail in a comment. check the "Testing checklist" in the PR content if any. leave detailed evicence of the manual testing done, run outputs, scripts used or any relevant info so I can be confident it worked.
+## Review Phase
+1. Once all checks pass, add a comment with exactly: `@claude`
+2. Wait for Claude's review response
+3. When review is complete:
+   - Summarize suggested changes
+   - Ask for my confirmation before implementing them
 
-After all leave a comment invoking the claude final review in the CI to kick the PR final review for merge. Just create a comment with this content: "@claude"
+## Cross-team Dependencies
+If changes require work from other teams (backend, iOS, etc.):
+1. Prepare a detailed memo explaining:
+   - What changes they need to make
+   - Why these changes are needed
+   - Any API contracts or interfaces affected
+   - Timeline considerations
+2. Post this memo as a comment on the PR for easy sharing
 
-wait for the review comment from claude when finish, propose me the changes you would make from their suggestion and ask me for confirmation before doing them
-
-if the change will require another team to do changes on their side, backend or IOS, prepare a memo explaining what they need to do, so I can send them easily, leave it as a comment
+## Important Notes
+- Always check for existing work before starting
+- Maintain consistency with previous commits in style and approach
+- Document the continuation plan clearly in PR comments
+- Branch naming convention: `issue-<number>-<sanitized-title>`
+- Worktree location: `./tree/issue-<number>-<sanitized-title>`
+- Wait for explicit confirmation before proceeding with major changes
