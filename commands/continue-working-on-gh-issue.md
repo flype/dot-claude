@@ -41,40 +41,7 @@
 1. Execute the plan step by step
 2. Ensure consistency with existing code in the branch
 3. Run local builds and tests before pushing
-
-## Testing & CI Phase
-1. Push the changes to the branch
-2. Monitor CI results
-3. If CI fails:
-   - Fix the issues
-   - Push fixes
-   - Repeat until CI passes
-
-## Manual Testing (if applicable)
-1. If the feature allows manual testing, propose a testing plan
-2. Upon confirmation, execute the manual testing
-3. Document in a PR comment:
-   - Testing steps performed
-   - Commands/scripts used
-   - Output screenshots or logs
-   - Results and observations
-4. Check and complete any "Testing checklist" items in the PR description
-
-## Review Phase
-1. Once all checks pass, add a comment with exactly: `@claude`
-2. Wait for Claude's review response
-3. When review is complete:
-   - Summarize suggested changes
-   - Ask for my confirmation before implementing them
-
-## Cross-team Dependencies
-If changes require work from other teams (backend, iOS, etc.):
-1. Prepare a detailed memo explaining:
-   - What changes they need to make
-   - Why these changes are needed
-   - Any API contracts or interfaces affected
-   - Timeline considerations
-2. Post this memo as a comment on the PR for easy sharing
+4. Remind me to start the '/post-implementation-workflow when you feel we are ready to advance
 
 ## Important Notes
 - Always check for existing work before starting

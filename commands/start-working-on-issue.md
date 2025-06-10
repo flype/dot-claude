@@ -27,46 +27,7 @@
 1. Implement the solution based on the issue requirements
 2. Ensure all changes follow the project's coding standards
 3. Run local builds and tests before pushing
-
-## Testing & CI Phase
-1. Push the changes to the branch
-2. Monitor CI results
-3. If CI fails:
-   - Fix the issues
-   - Push fixes
-   - Repeat until CI passes
-
-## Manual Testing (if applicable)
-1. If the feature allows manual testing, propose a testing plan
-2. if you are working in the scoop go service
-   - name the dev box: `dev-box-fly-issue-$ARGUMENT$`
-   - deploy to a new dev box environment
-   - setup the environment
-   - run your test aginst the newly created dev box url
-   - run command to destroy env after you finish the testing
-3. Upon confirmation, execute the manual testing
-4. Document in a PR comment:
-   - Testing steps performed
-   - Commands/scripts used
-   - Output screenshots or logs
-   - Results and observations
-5. Check and complete any "Testing checklist" items in the PR description
-
-## Review Phase
-1. Once all checks pass, add a comment with exactly: `@claude`
-2. Wait for Claude's review response
-3. When review is complete:
-   - Summarize suggested changes
-   - Ask for my confirmation before implementing them
-
-## Cross-team Dependencies
-If changes require work from other teams (backend, iOS, etc.):
-1. Prepare a detailed memo explaining:
-   - What changes they need to make
-   - Why these changes are needed
-   - Any API contracts or interfaces affected
-   - Timeline considerations
-2. Post this memo as a comment on the PR for easy sharing
+4. Remind me to start the '/post-implementation-workflow when you feel we are ready to advance
 
 ## Important Notes
 - Always use `gh` CLI for GitHub operations
