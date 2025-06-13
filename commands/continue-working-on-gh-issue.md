@@ -38,10 +38,11 @@
 4. Post the approved plan as a comment on the PR with header: "## Continuing Work - Plan"
 
 ## Implementation Phase
-1. Execute the plan step by step
+1. Execute the plan step by step, remember to build test before the implementation and run the build constanly to get quick feedback.
 2. Ensure consistency with existing code in the branch
-3. Run local builds and tests before pushing
-4. Remind me to start the '/post-implementation-workflow when you feel we are ready to advance
+3. Run local builds and tests before git commit & push
+4. create the PR
+5. Remind me to start the '/post-implementation-workflow when you feel we are ready to advance
 
 ## Important Notes
 - Always check for existing work before starting

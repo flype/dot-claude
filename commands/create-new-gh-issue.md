@@ -72,7 +72,7 @@ gh issue create --title "[Feature] YOUR_TITLE_HERE" --body "YOUR_ISSUE_CONTENT_H
 
 Then add to project:
 ```
-gh issue edit ISSUE_NUMBER --add-project "cooking Scoop!"
+gh issue edit ISSUE_NUMBER --add-project "cooking Scoop!" --field "Status=Todo"
 ```
 
 Tell me the issue number and URL when done.

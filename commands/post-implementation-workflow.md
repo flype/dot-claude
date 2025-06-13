@@ -1,6 +1,11 @@
+## Merge changes from main
+1. git fetch  all the new changes
+2. merge main into this branch
+3. resolve if any conflicts
+4. run all the test again and fixe if any fails if any change happen only
 
 ## Testing & CI Phase
-1. Push the changes to the branch
+1. Push the changes to the branch if any
 2. Monitor CI results
 3. If CI fails:
    - Fix the issues
@@ -10,14 +15,14 @@
 ## Manual Testing (if applicable)
 1. If the feature allows manual testing, propose a testing plan
 2. if you are working in the scoop Go repo
-   - name the dev box: `dev-box-fly-<branch-pattern>`
-   - deploy to a new dev box environment
+   - name the development box: `scoop-dev-fly-<branch-pattern>`
+   - deploy to a new development box environment
    - setup the environment
    - run your test aginst the newly created dev box url
    - run command to destroy env after you finish the testing
 3. if you are working in the IOS app scoop-ios repo 
-   - Ask felipe to manually deploy to a new box called `dev-box-fly-<branch-pattern your main service, provide him the commands ready to paste:
-	   1 deploy to a new dev box environment
+   - Ask felipe to manually deploy to a new box called `scoop-dev-fly-<branch-pattern>` your main service, provide him the commands ready to paste:
+	   1 deploy to a new development environment
 	   2 setup the environment
    - Wait for Felipe's confirmation that the environment it's ready before continuing
    - Add the url of the new deployed scoop into Config/Development* URL env var
@@ -26,8 +31,9 @@
 4. Document in a PR comment:
    - Testing steps performed
    - Commands/scripts used
-   - Output screenshots or logs
-   - Results and observations
+   - Output screenshots or logs for evidence collection.
+   - Detailed result and capture detailed evidences showing proof that it worked.
+   - if you use any script for testing make sure to show it in the comment.
 5. Check and complete any "Testing checklist" items in the PR description
 
 ## Review Phase
@@ -36,6 +42,9 @@
 3. When review is complete:
    - Summarize suggested changes
    - Ask for my confirmation before implementing them
+
+## Update our claude code md's
+1. Update CLAUDE.md and @docs/* if the changes implemented provide something new to improve this workflows
 
 ## Cross-team Dependencies
 If changes require work from other teams (backend, iOS, etc.):
@@ -62,3 +71,4 @@ If changes require work from other teams (backend, iOS, etc.):
 - <Branch naming convention: `issue-<number>-<sanitized-title>`
 - Worktree location: `./tree/issue-<number>-<sanitized-title>`
 - Wait for explicit confirmation before proceeding with major changes
+- deploy your branch in a developemnt environmet with `devbox run fly:deploy `scoop-dev-fly-<branch-pattern>`

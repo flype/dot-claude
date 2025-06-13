@@ -24,10 +24,11 @@
    - Post both questions and answers as a comment on the github issue $ARGUMENT$
 
 ## Implementation Phase
-1. Implement the solution based on the issue requirements
-2. Ensure all changes follow the project's coding standards
-3. Run local builds and tests before pushing
-4. Remind me to start the '/post-implementation-workflow when you feel we are ready to advance
+1. Execute the plan step by step, remember to build test before the implementation and run the build constanly to get quick feedback.
+2. Ensure consistency with existing code in the branch
+3. Run local builds and tests before git commit & push
+4. create the PR
+5. Remind me to start the '/post-implementation-workflow when you feel we are ready to advance
 
 ## Important Notes
 - Always use `gh` CLI for GitHub operations
@@ -35,4 +36,4 @@
 - Branch naming convention: `issue-<number>-<sanitized-title>`
 - Worktree location: `./tree/issue-<number>-<sanitized-title>`
 - Wait for explicit confirmation before proceeding with major changes
-- for deploying a new dev box in fly.io, use the commands availables in devbox run fly:*
+- deploy your branch in a developemnt environmet with `devbox run fly:deploy `scoop-dev-fly-<branch-pattern>`
