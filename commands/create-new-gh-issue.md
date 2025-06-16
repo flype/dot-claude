@@ -1,10 +1,10 @@
 # Create New GitHub Issue for Feature
 
 ## Input
-Feature idea: $ARGUMENT$
+Feature/Bug/Chore idea: $ARGUMENT$
 
 ## Step 1: Analysis
-- Analyze the feature idea provided
+- Analyze the feature/bug/chore idea provided
 - Look at relevant code files to understand current implementation
 - Identify what needs clarification
 
@@ -67,7 +67,7 @@ Wait for my approval.
 ## Step 5: Create Issue
 After approval, run:
 ```
-gh issue create --title "[Feature] YOUR_TITLE_HERE" --body "YOUR_ISSUE_CONTENT_HERE"
+gh issue create --title "[Feature/bug/chore] YOUR_TITLE_HERE" --body "YOUR_ISSUE_CONTENT_HERE"
 ```
 
 Then add to project:
@@ -82,6 +82,7 @@ Tell me the issue number and URL when done.
 - Use specific file names and paths
 - Make testing steps concrete and actionable
 - Focus on user benefits, not technical details
+- Triage and use the correct term in the issue:it's a feature, a bug or a chore?
 ```
 
 Key improvements:

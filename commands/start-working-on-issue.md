@@ -24,9 +24,9 @@
    - Post both questions and answers as a comment on the github issue $ARGUMENT$
 
 ## Implementation Phase
-1. Execute the plan step by step, remember to build test before the implementation and run the build constanly to get quick feedback.
+1. Execute the plan step by step, remember to build test before the implementation and run the test suite constanly to get quick feedback.
 2. Ensure consistency with existing code in the branch
-3. Run local builds and tests before git commit & push
+3. Run local builds and tests suite before git commit & push
 4. create the PR
 5. Remind me to start the '/post-implementation-workflow when you feel we are ready to advance
 
