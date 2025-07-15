@@ -5,11 +5,6 @@
 2. Get issue details 
    - Fetch issue title: `gh issue view $ARGUMENT$ --json title -q .title`
 
-## Project Management
-1. Move issue #$ARGUMENT$ to "In progress" status in project "cooking Scoop!"
-   - First, verify the project ID matches: PVT_kwDOCuNJK84A6lGK
-   - Use command: `gh project item-edit --project-id PVT_kwDOCuNJK84A6lGK --id <ITEM_ID> --field-id PVTSSF_lADOCuNJK84A6lGKzgvIa9g --single-select-option-id 47fc9ee4`
-
 ## Analysis Phase
 1. Read the full issue content and ALL comments using: `gh issue view $ARGUMENT$ --comments`
 2. Analyze the requirements and context thoroughly
@@ -23,10 +18,32 @@
 2. Ensure consistency with existing code in the branch
 3. Run local builds and tests suite before git commit & push
 4. create the PR
-5. Remind me to start the '/post-implementation-workflow when you feel we are ready to advance
+5. Report status of completenes:
+
+<results>
+
+  # Summary of the requirements implemented:
+	- req 1
+        - req 2
+	- ...
+
+  # Requirements pending
+	- req 1
+        - req 2
+	- ...
+  # Test implemented and their run status
+     ok    github.com/drinksilver/scoop/internal/testing/blalb_test.go       31.604sm
+
+  # Proof that all build passes
+     ok    github.com/drinksilver/scoop/internal/testing/e2e       31.604sm
+     ok    github.com/drinksilver/scoop/internal       90.604sm
+  
+  # Overall status: [Needs More Work/All Completed]
+  # PR: github-pr-url
+</result>
 
 ## Important Notes
+ -The All completed is the desired status and we can only arrive if we have implemented all the requirements and all the test suite are implemented and green otherwhise we need more work until that happends
 - Always use `gh` CLI for GitHub operations
 - Keep detailed records of all actions as PR/issue comments
 - Wait for explicit confirmation before proceeding with major changes
-- deploy your branch in a developemnt environmet with `devbox run fly:deploy `scoop-dev-fly-$ARGUMENT$``

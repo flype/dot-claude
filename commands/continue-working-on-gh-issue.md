@@ -2,18 +2,6 @@
 
 ## Setup Phase
 1. Fetch latest branches: `git fetch origin`
-2. Find the existing branch for this issue:
-   - List worktrees: `git worktree list`
-   - Look for branch pattern: `issue-$ARGUMENT$-*`
-3. If worktree exists:
-   - Change to existing worktree directory: `cd ./tree/issue-$ARGUMENT$-*`
-   - Pull latest changes: `git pull origin <branch-name>`
-4. If worktree doesn't exist:
-   - Check if remote branch exists: `git branch -r | grep issue-$ARGUMENT$`
-   - Fetch issue title: `gh issue view $ARGUMENT$ --json title -q .title`
-   - Sanitize title: lowercase, replace spaces with hyphens, remove special characters
-   - Create worktree from existing branch: `git worktree add ./tree/issue-$ARGUMENT$-<sanitized-title> issue-$ARGUMENT$-<sanitized-title>`
-   - Change to worktree directory: `cd ./tree/issue-$ARGUMENT$-*`
 
 ## Context Analysis Phase
 1. Read the full issue content and ALL comments: `gh issue view $ARGUMENT$ --comments`

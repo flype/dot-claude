@@ -66,9 +66,5 @@ If changes require work from other teams (backend, iOS, etc.):
 - Always check for existing work before starting
 - Maintain consistency with previous commits in style and approach
 - Document the continuation plan clearly in PR comments
-- List worktrees: `git worktree list`
-- Look for <branch-pattern>: `pwd | grep worktrees/(*)`
-- <Branch naming convention: `issue-<number>-<sanitized-title>`
-- Worktree location: `./tree/issue-<number>-<sanitized-title>`
 - Wait for explicit confirmation before proceeding with major changes
 - deploy your branch in a developemnt environmet with `devbox run fly:deploy `scoop-dev-fly-<branch-pattern>`

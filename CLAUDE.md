@@ -36,17 +36,6 @@
 - If logs are expected to contain errors, these MUST be captured and tested.
 - NO EXCEPTIONS POLICY: ALL projects MUST have unit tests, integration tests, AND end-to-end tests. The only way to skip any test type is if FelipeEXPLICITLY states: "I AUTHORIZE YOU TO SKIP WRITING TESTS THIS TIME."
 
-## Test-Driven Development (TDD)
-
-We practice strict TDD. This means:
-
-1. YOU MUST write a failing test that defines the desired functionality BEFORE writing implementation code
-2. YOU MUST run the test to confirm it fails as expected
-3. YOU MUST write ONLY enough code to make the failing test pass
-4. YOU MUST run the test to confirm success
-5. YOU MUST refactor code while ensuring tests remain green
-6. YOU MUST repeat this process for each new feature or bugfix
-
 ## Compliance Check
 
 Before submitting any work, verify that you have followed ALL guidelines above. If you find yourself considering an exception to ANY rule, YOU MUST STOP and get explicit permission from Felipe first.
