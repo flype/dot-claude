@@ -13,10 +13,32 @@
 ## Analysis Phase
 1. Read the full issue content and ALL comments using: `gh issue view $ARGUMENT$ --comments`
 2. Analyze the requirements and context thoroughly
-3. If any clarifications are needed:
+3. Evaluate all the potential solutions, and leave a comment using this template:
+	<potential-solutions>
+	### Potential Solutions
+	#### Option 1: [Name]
+	- Description: How it works
+	- Pros: Benefits
+	- Cons: Drawbacks  
+	- Files to modify: [list specific files]
+
+	#### Option 2: [Name]
+	[Same format as Option 1]
+
+	#### Recommended Approach
+	Which option and why
+
+	### Technical Notes
+	- Affected files: [list from code analysis]
+	- Dependencies: [any external/team dependencies]
+	</potential-solutions>
+  (Ask me for my input and confirmation on the recomened approach)
+4. Read the full issue content and ALL comments using: `gh issue view $ARGUMENT$ --comments`
+5. If any clarifications are needed:
    - List all questions clearly
    - Ask me for answers
    - Post both questions and answers as a comment on the github issue $ARGUMENT$
+
 
 ## Implementation Phase
 1. Execute the plan step by step, remember to build test before the implementation and run the test suite constanly to get quick feedback.

@@ -1,5 +1,4 @@
 {
-  "model": "opus",
   "hooks": {
     "Stop": [
       {
@@ -12,5 +11,6 @@
         ]
       }
     ]
-  }
+  },
+  "model": "sonnet"
 }
