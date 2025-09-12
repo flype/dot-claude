@@ -1,16 +1,10 @@
 {
-  "hooks": {
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/felipe/.claude/hooks/check-task-completion.py"
-          }
-        ]
-      }
+  "permissions": {
+    "allow": [
+      "Bash(./hack/spec_metadata.sh)",
+      "Bash(hack/spec_metadata.sh)",
+      "Bash(bash hack/spec_metadata.sh)"
     ]
   },
-  "model": "sonnet"
+  "enableAllProjectMcpServers": false
 }
