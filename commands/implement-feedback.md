@@ -1,25 +1,22 @@
-# GitHub Issue Workflow for Issue #$ARGUMENT$
+# GitHub Feedback Workflow for Issue #$ARGUMENT$
 
 ## Setup Phase
 1. Fetch latest branches: `git fetch origin`
 2. Get issue details 
    - Fetch issue title: `gh issue view $ARGUMENT$ --json title -q .title`
 
-## Worktree Phase (if you are not now in a ./tree folder)
-1. git worktree add ./.trees/feature-issue-$ARGUMENTS -b feature-issue-$ARGUMENTS
-2- cd .trees/feature-issue-$ARGUMENTS
-
 ## Analysis Phase
 1. Read the full issue content and ALL comments using: `gh issue view $ARGUMENT$ --comments`
-2. Analyze the requirements and context thoroughly
+2. Analyze the requirements, context, and feedback thoroughly
 
 ## Implementation Phase
+1. Implement a plan to apply the changes needed for the feedback in the PR
 1. Execute the plan step by step, remember to build test before the implementation and run the test suite constanly to get quick feedback.
 2. Create always unit tests
 3. Ensure consistency with existing code in the branch
 4. Run local builds and tests suite before git commit & push
 5. Never implement the manual tests
-6. Create the PR or update the existing one
+6. Update the PR with the new changes that covers the feedback
 7. Report status of completenes:
 
 <results>

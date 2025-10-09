@@ -24,14 +24,41 @@ This repository contains Felipe's customized Claude Code setup, including custom
      "model": "sonnet"
    }
    ```
+3. Update [YOUR_NAME] in the project to your name
+
+4. Create agents
+You have as example `frontend-developer.md`
+Create agents for your specific tech stack, at the end of them add this code and update the naming of the documentation files "[doc_file_name]"
+
+````
+## Goal
+Your goal is to propose a detailed implementation plan for our current codebase & project, including specifically which files to create/change, what changes/content are, and all the important notes (assume others only have outdated knowledge about how to do the implementation)
+NEVER do the actual implementation, just propose implementation plan
+Save the implementation plan in `.claude/doc/{feature_name}/[doc_file_name].md`
+
+
+## Output format
+Your final message HAS TO include the implementation plan file path you created so they know where to look up, no need to repeat the same content again in final message (though is okay to emphasis important notes that you think they should know in case they have outdated knowledge)
+
+e.g. I've created a plan at `.claude/doc/{feature_name}/[doc_file_name].md`, please read that first before you proceed
+
+
+## Rules
+- NEVER do the actual implementation, or run build or dev, your goal is to just research and parent agent will handle the actual building & dev server running
+- Before you do any work, MUST view files in `.claude/sessions/context_session_{feature_name}.md` file to get the full context
+- After you finish the work, MUST create the `.claude/doc/{feature_name}/[doc_file_name].md` file to make sure others can get full context of your proposed implementation
+```
+## Update `claude.md`
+Update the Subagents Workflow section with the agents created (Search [YOUR AGENTS])
+
 
 ## Structure
 
 ```
 .
 ├── commands/                    # Custom Claude Code commands
-│   ├── research_codebase_codex.md
-│   ├── explore-plan-code-test.md
+│   ├── explore-plan.md
+│   ├── create-new-gh-issue.md
 │   ├── start-working-on-issue.md
 │   └── ...
 ├── projects/                    # Project-specific configurations
@@ -49,81 +76,42 @@ These commands follow a main development workflow sequence. Use them in order fo
 
 ### Main Workflow (Sequential)
 
-#### 1. `/create-new-gh-issue <feature-description>`
-**Purpose**: Create well-structured GitHub issues from feature ideas
+
+#### 1. `/explore-plan <feature-description>`
+**Purpose**: Define and create context session file with all the context neede for the feature
 - Analyzes the feature request against existing codebase
 - Asks clarifying questions about requirements
+- Gather al the neded context for the feature usign agents to leverage space in context
+- Creates comprehensive plan with problem statement, user value, and definition of done
+- Includes detailed manual testing checklist
+
+
+#### 2. `/create-new-gh-issue <context_file>`
+**Purpose**: Create well-structured GitHub issues from context session plan
+- Analyze the context file 
 - Creates comprehensive issue with problem statement, user value, and definition of done
 - Includes detailed manual testing checklist
 
-#### 2. `/start-working-on-issue-new <issue-number>`
+#### 3. `/start-working-on-issue-new <issue-number>`
 **Purpose**: Start working on a GitHub issue with comprehensive analysis and planning
 - Fetches and analyzes the complete issue including all comments
 - Evaluates multiple potential solutions with pros/cons
 - Moves issue to "In progress" status in project management
 - Creates structured implementation plan
-- Sets up proper git workflow and branch management
+- Start in a worktree the implementation of the feature
 
-#### 3. `/continue-working-on-gh-issue <issue-number>` (if needed)
+[In loop 4-5]
+#### 4. `/update-feedback <issue-number>`
 **Purpose**: Resume work on an existing GitHub issue
 - Analyzes all previous work and commits
-- Reviews existing PR and feedback
-- Creates continuation plan based on current state
-- Maintains consistency with previous implementation approach
+- Uses `qa-criteria-validator` agent to open a browser and complete the manual tests
+- Update the Issue and the PR with feedback
 
-#### 4. `/cycle-ci-until-green` (if build fails)
+#### 5. `/implement-feedback` (if build fails)
 **Purpose**: Continuously monitor and fix CI build failures
-- Monitors GitHub workflow status after pushes
-- Automatically fixes build failures
-- Keeps pushing until all checks pass
-- Uses GitHub CLI to check build status
+- Fetches and analyzes the complete issue including all comments
+- Implement the feedback from `/update-feedback.md` command
 
-#### 5. `/post-implementation-workflow`
-**Purpose**: Complete post-development tasks and testing
-- Merges latest changes from main branch
-- Monitors CI and fixes failures
-- Executes manual testing with development environment setup
-- Handles code review process
-- Updates documentation and cross-team dependencies
-- Manages deployment and post-merge actions
-
-### Utility Commands (Ad Hoc)
-
-#### `/explore-plan-code-test` (Vibe Coding)
-**Purpose**: Mini full-cycle prompt for quick development without formal issue tracking
-- **Explore**: Uses parallel agents to find relevant files and examples
-- **Plan**: Creates detailed implementation plan with research backing
-- **Code**: Implements following existing codebase patterns
-- **Test**: Runs comprehensive testing including browser testing if needed
-- Generates PR description with implementation choices and justification
-
-#### `/start-working-on-issue <issue-number>` (Legacy)
-**Purpose**: Legacy version for starting work on GitHub issues
-- Simpler workflow compared to the "new" version
-- Focuses on immediate implementation without extensive solution analysis
-- Good for straightforward issues that don't need deep planning
-
-#### `/next-on-plan-from-prd <section>`
-**Purpose**: Planning mode for brainstorming next features to implement
-- Reviews API specifications and product requirements
-- Builds inventory of implemented vs missing features
-- Helps prioritize development work
-- Creates problem statements for new issues
-
-#### `/pixel-perfect-design <section>`
-**Purpose**: Implement Figma designs with pixel-perfect accuracy
-- Compares current app screenshots with Figma designs
-- Creates detailed improvement plan for visual discrepancies
-- Iteratively improves design implementation
-- Uses Playwright for automated screenshot comparison
-
-#### `/research_codebase_codex`
-**Purpose**: Comprehensive codebase research and documentation
-- Conducts evidence-based research across the entire codebase
-- Creates detailed research documents with file:line references
-- Uses multiple specialized research agents for different aspects
-- Generates GitHub permalinks for easy navigation
-- Maintains research documentation in structured format
 
 ## Configuration
 
@@ -161,15 +149,11 @@ Once installed, Claude Code will automatically use these configurations. Custom 
 ### Main Development Flow
 Follow this sequence for structured development:
 
-1. `/create-new-gh-issue` → Create and plan the feature
+1. `/explore-plan` → Create and plan the feature and gather context
+1. `/create-new-gh-issue` → Create gh issue
 2. `/start-working-on-issue-new` → Begin implementation
-3. `/continue-working-on-gh-issue` → Resume if needed
-4. `/cycle-ci-until-green` → Fix build issues if they occur
-5. `/post-implementation-workflow` → Complete and deploy
-
-### Quick Development (Vibe Coding)
-For rapid prototyping or small changes:
-- `/explore-plan-code-test` → Complete mini-cycle without formal issue tracking
+3. `/update-feedback` → Test and provide feedback
+4. `/implement-feedbac` → Implement the feedback
 
 ## Customization
 
@@ -184,6 +168,7 @@ To modify workflows:
 1. Edit the relevant command files in `commands/`
 2. Update `CLAUDE.md` for behavioral changes
 3. Modify `settings.json` for system-level configuration
+
 
 ## Contributing
 

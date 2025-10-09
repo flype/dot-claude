@@ -1,24 +1,16 @@
-# Create New GitHub Issue for Feature
+<context_session_file>
+#$ARGUMENTS
+</context_session_file>
 
+# Create New GitHub Issue for Feature
 ## Input
-Feature/Bug/Chore idea: $ARGUMENT$
+Feature/Bug/Chore plan: $ARGUMENTS
 
 ## Step 1: Analysis
 - Analyze the feature/bug/chore idea provided
-- Look at relevant code files to understand current implementation
-- Identify what needs clarification
+- Look at relevant context_session_file and code files to understand current and needed implementation
 
-## Step 2: Clarification
-Ask me questions about anything unclear:
-- User scenarios
-- Edge cases  
-- Integration requirements
-- Performance needs
-- Dependencies
-
-Wait for my answers before continuing.
-
-## Step 3: Draft Issue
+## Step 2: Draft Issue
 Create an issue with this structure:
 
 ### Problem Statement
@@ -42,12 +34,12 @@ What specific benefits will users get? Give concrete examples.
 - Error handling: [error scenarios to test]
 - Integration: [test with existing features]
 
-## Step 4: Review
+## Step 3: Review
 Show me the complete issue draft and ask: "Is this ready to create? Any changes needed?"
 
 Wait for my approval.
 
-## Step 5: Create Issue
+## Step 4: Create Issue
 After approval, run:
 ```
 gh issue create --title "[Feature/bug/chore] YOUR_TITLE_HERE" --body "YOUR_ISSUE_CONTENT_HERE"
