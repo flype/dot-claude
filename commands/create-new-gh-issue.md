@@ -5,7 +5,8 @@ Feature/Bug/Chore idea: $ARGUMENT$
 
 ## Step 1: Analysis
 - Analyze the feature/bug/chore idea provided
-- Look at relevant code files to understand current implementation
+- use parallel subagents to find and read all files that may be useful for implementing the ticket, either as examples or as edit targets. The subagents should return relevant file paths, and any other info that may be useful.
+- If there are things you are not sure about, use parallel subagents to do some web research. They should only return useful information, no noise.
 - Identify what needs clarification
 
 ## Step 2: Clarification
@@ -19,7 +20,8 @@ Ask me questions about anything unclear:
 Wait for my answers before continuing.
 
 ## Step 3: Draft Issue
-Create an issue with this structure:
+- Think hard and write up a detailed implementation plan. Don't forget to include tests, lookbook components, and documentation. Use your judgement as to what is necessary, given the standards of this repo.
+- Create an issue with this structure:
 
 ### Problem Statement
 What problem does this solve? What are current limitations?

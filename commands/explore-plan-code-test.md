@@ -6,9 +6,12 @@ First, use parallel subagents to find and read all files that may be useful for 
 # Plan
 Next, think hard and write up a detailed implementation plan. Don't forget to include tests, lookbook components, and documentation. Use your judgement as to what is necessary, given the standards of this repo.
 
+
 If there are things you are not sure about, use parallel subagents to do some web research. They should only return useful information, no noise.
 
 If there are things you still do not understand or questions you have for the user, pause here to ask them before continuing.
+
+Make sure to stop in case of questions!!!
 
 # Code
 When you have a thorough implementation plan, you are ready to start writing code. Follow the style of the existing codebase (e.g. we prefer clearly named variables and methods to extensive comments). Make sure to run our autoformatting script when you're done, and fix linter warnings that seem reasonable to you.
